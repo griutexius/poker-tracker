@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaugio Gazino Poker Tracker Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Gaugio Gazino Poker Tracker - Session Result</h2>
+        <p>{{ outcome }}</p>
+        <p>Buy-In: €{{ buy_in_amount }}</p>
+        <p>Cash-Out: €{{ cash_out_amount }}</p>
+        <p>Net Profit/Loss: €{{ result }}</p>
+        <a href="/">Start a New Session</a>
+    </div>
+</body>
+</html>
