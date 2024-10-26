@@ -1,21 +1,33 @@
+<!-- buy_in.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy-In</title>
+    <title>Buy-In and Cash-Out</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h2>Welcome, {{ username }}! Ready to start?</h2>
-        <p>Thank you for joining Gaugio Gazino. Here you can proceed with your buy-in process.</p>
-        
-        <form action="/buy_in" method="POST">
+        <form method="POST">
             <label for="buy_in">Enter Buy-In Amount:</label>
-            <input type="number" id="buy_in" name="buy_in" required placeholder="Enter Buy-In Amount">
-            <button type="submit">Next</button>
+            <input type="number" id="buy_in" name="buy_in" required>
+
+            <label for="cash_out">Enter Cash-Out Amount:</label>
+            <input type="number" id="cash_out" name="cash_out" required>
+
+            <button type="submit">Calculate</button>
         </form>
+
+        {% if last_result %}
+            <div class="last-result">
+                <h3>Your Last Session:</h3>
+                <p>Buy-In: {{ last_result[0] }}</p>
+                <p>Cash-Out: {{ last_result[1] }}</p>
+                <p>Profit: {{ last_result[2] }}</p>
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>
