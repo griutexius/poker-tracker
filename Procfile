@@ -1,1 +1,1 @@
-﻿web: gunicorn app:app -b 0.0.0.0:8000
+web: gunicorn poker_website.app:app
