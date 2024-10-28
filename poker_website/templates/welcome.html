@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Gaugio's Gazino Poker Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-box">
+            <h1>Hello and Welcome to Gaugio's Gazino Poker Tracker</h1>
+            <p>Manage your poker sessions, track your progress, and improve your game.</p>
+            <div class="button-group">
+                <a href="{{ url_for('login') }}" class="button green-button">Login</a>
+                <a href="{{ url_for('register') }}" class="button green-button">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

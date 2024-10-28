@@ -12,6 +12,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+# Root route to display the welcome page
+@app.route('/')
+def welcome():
+    return render_template('welcome.html')
+
 # Home route to display the latest session result
 @app.route('/home')
 def home():
