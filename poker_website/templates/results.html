@@ -1,6 +1,26 @@
-<h2>Session Results</h2>
-<p>Date: {{ session_data['date'] }}</p>
-<p>Buy In: ${{ session_data['buy_in'] }}</p>
-<p>Cash Out: ${{ session_data['cash_out'] }}</p>
-<p>Profit/Loss: ${{ profit_or_loss }}</p>
-<a href="{{ url_for('home') }}">Back to Home</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Latest Poker Session Result</h1>
+        {% if session_data %}
+        <div class="session-info">
+            <p><strong>Date:</strong> {{ session_data['date'] }}</p>
+            <p><strong>Buy-in:</strong> ${{ session_data['buy_in'] }}</p>
+            <p><strong>Cash-out:</strong> ${{ session_data['cash_out'] }}</p>
+            <p><strong>Profit/Loss:</strong> ${{ profit_or_loss }}</p>
+        </div>
+        {% else %}
+        <p>No session data available.</p>
+        {% endif %}
+        
+        <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
