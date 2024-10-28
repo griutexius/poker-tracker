@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div class="welcome-box">
-            <h1>Hello and Welcome to Gaugio's Gazino Poker Tracker</h1>
-            <p>Manage your poker sessions, track your progress, and improve your game.</p>
-            <div class="button-group">
-                <a href="{{ url_for('login') }}" class="button green-button">Login</a>
-                <a href="{{ url_for('register') }}" class="button green-button">Register</a>
-            </div>
-        </div>
+  <div class="container">
+    <h2>Welcome to Gaugio's Gazino Poker Tracker</h2>
+    <p class="welcome-message">Hello and welcome to Gaugio's Gazino Poker Tracker!</p>
+    <div class="button-group">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('register') }}" class="btn">Register</a>
+    </div>
+  </div>
     </div>
 </body>
 </html>
