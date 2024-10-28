@@ -2,11 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h2>Welcome, {{ username }}!</h2>
-    <p>This is your home page.</p>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        
+        {% if latest_session %}
+        <div class="session-info">
+            <h2>Latest Poker Session</h2>
+            <p><strong>Date:</strong> {{ latest_session['date'] }}</p>
+            <p><strong>Buy-in:</strong> ${{ latest_session['buy_in'] }}</p>
+            <p><strong>Cash-out:</strong> ${{ latest_session['cash_out'] }}</p>
+            <p><strong>Profit/Loss:</strong> ${{ latest_session['cash_out'] - latest_session['buy_in'] }}</p>
+        </div>
+        {% else %}
+        <p>No session data available.</p>
+        {% endif %}
+
+        <div class="button-group">
+            <a href="{{ url_for('new_session') }}" class="btn">Start New Session</a>
+            <a href="{{ url_for('results') }}" class="btn">View Latest Result</a>
+            <a href="{{ url_for('all_sessions') }}" class="btn">View All Sessions</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,6 @@
+<h2>Session Results</h2>
+<p>Date: {{ session_data['date'] }}</p>
+<p>Buy In: ${{ session_data['buy_in'] }}</p>
+<p>Cash Out: ${{ session_data['cash_out'] }}</p>
+<p>Profit/Loss: ${{ profit_or_loss }}</p>
+<a href="{{ url_for('home') }}">Back to Home</a>
