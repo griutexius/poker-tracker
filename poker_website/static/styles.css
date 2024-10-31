@@ -98,3 +98,87 @@ button:hover,
     border-radius: 8px;
     background-color: #f9f9f9;
 }
+
+/* General body styling to center content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Heading style */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #005c059c;
+}
+
+/* Session info styling */
+.session-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.session-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.session-item span {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Checkbox styling */
+.session-item input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 10px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: white;
+    background-color: #005c059c;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #067502;
+}
+
+/* Back button styling (if needed) */
+a.btn {
+    text-align: center;
+    text-decoration: none;
+}
