@@ -75,6 +75,25 @@ def results():
 
     return render_template('results.html', session_data=session_data, profit_or_loss=profit_or_loss)
 
+# Route to handle deletion of selected sessions
+@app.route('/delete_sessions', methods=['POST'])
+def delete_sessions():
+    if 'user_id' not in session:
+        flash("Please log in to access this page.")
+        return redirect(url_for('login'))
+    
+    session_ids = request.form.getlist('session_ids')
+    if session_ids:
+        conn = get_db_connection()
+        conn.executemany('DELETE FROM sessions WHERE id = ? AND user_id = ?', [(session_id, session['user_id']) for session_id in session_ids])
+        conn.commit()
+        conn.close()
+        flash("Selected sessions deleted successfully.")
+    else:
+        flash("No sessions selected for deletion.")
+    
+    return redirect(url_for('all_sessions'))
+
 # Register route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
