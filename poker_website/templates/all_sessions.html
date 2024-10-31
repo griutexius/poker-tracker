@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Sessions</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>All Poker Sessions</h1>
-        {% for session in sessions %}
+<div class="container">
+    <h2>Your Poker Sessions</h2>
+    <form action="{{ url_for('delete_sessions') }}" method="POST">
         <div class="session-info">
-            <p><strong>Date:</strong> {{ session['date'] }}</p>
-            <p><strong>Buy-in:</strong> ${{ session['buy_in'] }}</p>
-            <p><strong>Cash-out:</strong> ${{ session['cash_out'] }}</p>
-            <p><strong>Profit/Loss:</strong> ${{ session['cash_out'] - session['buy_in'] }}</p>
+            {% for session in sessions %}
+                <div class="session-item">
+                    <input type="checkbox" name="session_ids" value="{{ session['id'] }}"> 
+                    <span>Date: {{ session['date'] }}</span> |
+                    <span>Buy In: {{ session['buy_in'] }}</span> |
+                    <span>Cash Out: {{ session['cash_out'] }}</span> |
+                    <span>Profit/Loss: {{ session['cash_out'] - session['buy_in'] }}</span>
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
-    </div>
+        <button type="submit" class="btn">Delete Selected Sessions</button>
+    </form>
+    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+</div>
 </body>
 </html>
