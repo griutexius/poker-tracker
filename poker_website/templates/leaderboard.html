@@ -1,0 +1,19 @@
+<div class="leaderboard">
+    <h3>Leaderboard</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Total Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in leaderboard_data %}
+                <tr>
+                    <td>{{ entry['username'] }}</td>
+                    <td>${{ entry['total_profit'] | round(2) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

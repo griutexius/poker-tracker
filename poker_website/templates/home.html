@@ -28,5 +28,10 @@
             <a href="{{ url_for('all_sessions') }}" class="btn">View All Sessions</a>
         </div>
     </div>
+
+    <!-- Include the leaderboard in the right corner -->
+    <div class="leaderboard-container">
+        {% include 'leaderboard.html' %}
+    </div>
 </body>
 </html>

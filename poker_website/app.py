@@ -136,6 +136,20 @@ def login():
     
     return render_template('login.html')
 
+# Leaderboard route
+@app.route('/leaderboard')
+def leaderboard():
+    conn = get_db_connection()
+    leaderboard_data = conn.execute('''
+        SELECT users.username, SUM(sessions.cash_out - sessions.buy_in) AS total_profit
+        FROM users
+        JOIN sessions ON users.id = sessions.user_id
+        GROUP BY users.id
+        ORDER BY total_profit DESC
+    ''').fetchall()
+    conn.close()
+    return render_template('leaderboard.html', leaderboard_data=leaderboard_data)
+
 # Logout route
 @app.route('/logout')
 def logout():
