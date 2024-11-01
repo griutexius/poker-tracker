@@ -147,19 +147,18 @@ a.btn {
     text-decoration: none;
 }
 
-/* Leaderboard styling */
+/* Leaderboard styling for top-right positioning */
 .leaderboard {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 220px;
+    position: fixed; /* Fixed positioning to keep it in the viewport */
+    top: 20px; /* Adjust the distance from the top */
+    right: 20px; /* Adjust the distance from the right */
+    width: 200px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: left;
-    border: 1px solid #ddd;
-    transition: transform 0.3s;
+    z-index: 1000; /* Ensures it stays above other content */
 }
 
 .leaderboard:hover {
