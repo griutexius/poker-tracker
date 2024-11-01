@@ -9,7 +9,8 @@
 <body>
     <div class="container">
         <h1>Welcome, {{ username }}!</h1>
-        
+
+        <!-- Latest session info -->
         {% if latest_session %}
         <div class="session-info">
             <h2>Latest Poker Session</h2>
@@ -22,21 +23,27 @@
         <p>No session data available.</p>
         {% endif %}
 
+        <!-- Button group -->
         <div class="button-group">
             <a href="{{ url_for('new_session') }}" class="btn">Start New Session</a>
             <a href="{{ url_for('results') }}" class="btn">View Latest Result</a>
             <a href="{{ url_for('all_sessions') }}" class="btn">View All Sessions</a>
         </div>
-    </div>
 
-    <!-- Include the leaderboard in the right corner -->
-   <div class="leaderboard">
-    <h3>Leaderboard</h3>
-    {% for player in leaderboard %}
-    <div class="leaderboard-item">
-        <span>{{ player.username }}</span>
-        <span>${{ player.total_profit }}</span>
+        <!-- Leaderboard section -->
+        <div class="leaderboard">
+            <h3>Leaderboard</h3>
+            {% if leaderboard %}
+                {% for player in leaderboard %}
+                <div class="leaderboard-item">
+                    <span>{{ player['username'] }}</span>
+                    <span>${{ player['total_profit'] }}</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No leaderboard data available.</p>
+            {% endif %}
+        </div>
     </div>
-    {% endfor %}
-</div>
-
+</body>
+</html>
