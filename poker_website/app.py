@@ -8,28 +8,42 @@ app.secret_key = "supersecretkey"
 
 # Database connection function
 def get_db_connection():
-    conn = sqlite3.connect("poker_website/database.db")  # Make sure this path is correct
+    conn = sqlite3.connect("poker_website/database.db")  # Ensure this path is correct
     conn.row_factory = sqlite3.Row
     return conn
+
+# Function to get leaderboard data
+def get_leaderboard():
+    conn = get_db_connection()
+    leaderboard = conn.execute('''
+        SELECT users.username, SUM(sessions.cash_out - sessions.buy_in) AS total_profit
+        FROM users
+        JOIN sessions ON users.id = sessions.user_id
+        GROUP BY users.id
+        ORDER BY total_profit DESC
+    ''').fetchall()
+    conn.close()
+    return leaderboard
 
 # Root route to display the welcome page
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
 
-# Home route to display the latest session result
+# Home route to display the latest session result and leaderboard
 @app.route('/home')
 def home():
     if 'user_id' not in session:
         flash("Please log in to access this page.")
         return redirect(url_for('login'))
-    
+
     conn = get_db_connection()
     latest_session = conn.execute('SELECT * FROM sessions WHERE user_id = ? ORDER BY id DESC LIMIT 1',
                                   (session['user_id'],)).fetchone()
     conn.close()
-    
-    return render_template('home.html', username=session['username'], latest_session=latest_session)
+
+    leaderboard = get_leaderboard()
+    return render_template('home.html', username=session['username'], latest_session=latest_session, leaderboard=leaderboard)
 
 # Route to handle new session entry
 @app.route('/new_session', methods=['GET', 'POST'])
@@ -139,15 +153,7 @@ def login():
 # Leaderboard route
 @app.route('/leaderboard')
 def leaderboard():
-    conn = get_db_connection()
-    leaderboard_data = conn.execute('''
-        SELECT users.username, SUM(sessions.cash_out - sessions.buy_in) AS total_profit
-        FROM users
-        JOIN sessions ON users.id = sessions.user_id
-        GROUP BY users.id
-        ORDER BY total_profit DESC
-    ''').fetchall()
-    conn.close()
+    leaderboard_data = get_leaderboard()
     return render_template('leaderboard.html', leaderboard_data=leaderboard_data)
 
 # Logout route
