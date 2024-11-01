@@ -30,8 +30,13 @@
     </div>
 
     <!-- Include the leaderboard in the right corner -->
-    <div class="leaderboard-container">
-        {% include 'leaderboard.html' %}
+   <div class="leaderboard">
+    <h3>Leaderboard</h3>
+    {% for player in leaderboard %}
+    <div class="leaderboard-item">
+        <span>{{ player.username }}</span>
+        <span>${{ player.total_profit }}</span>
     </div>
-</body>
-</html>
+    {% endfor %}
+</div>
+
