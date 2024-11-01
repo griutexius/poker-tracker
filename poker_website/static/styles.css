@@ -50,6 +50,13 @@ button,
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #005c059c;
 }
 
 /* Button styling */
@@ -80,6 +87,7 @@ button:hover,
     padding: 0.5rem;
     border-radius: 4px;
     margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
 }
 
 /* Welcome page specific styling */
@@ -114,6 +122,11 @@ button:hover,
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.session-item:hover {
+    background-color: #eef5e9;
 }
 
 .session-item span {
@@ -139,12 +152,18 @@ a.btn {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 200px;
+    width: 220px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: left;
+    border: 1px solid #ddd;
+    transition: transform 0.3s;
+}
+
+.leaderboard:hover {
+    transform: scale(1.05);
 }
 
 .leaderboard h3 {
@@ -159,6 +178,7 @@ a.btn {
     justify-content: space-between;
     padding: 0.5rem 0;
     border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
 }
 
 .leaderboard-item:last-child {
@@ -168,4 +188,12 @@ a.btn {
 .leaderboard-item span {
     font-weight: bold;
     color: #333;
+}
+
+.leaderboard-item:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.leaderboard-item:nth-child(even) {
+    background-color: #eef5e9;
 }
